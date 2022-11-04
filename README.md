@@ -1,11 +1,13 @@
-# Docker PHP Environment Boilerplate
+# Docker PHP Lite Stack
 
+Here you have the very basic to create a php application
 ## Containers
 
 This web/http container doesn't have SSL enabled
 
 - NGINX
 - PHP 8.1.10 (extra extensions: redis, xdebug, event, intl, opcache, pdo_mysql, mcrypt, pcntl, sockets)
+- Composer
 - MySQL 8.0.30
 - Mailhog SMTP Mailtrap
 
