@@ -11,9 +11,13 @@ This web/http container doesn't have SSL enabled
 - MySQL 5.7
 - Mailhog SMTP Mailtrap
 
-## Environment Vars
+## XDEBUG and Environment Vars
 
-For Xbebug to work you must export the following environment variable (PS: Change the example IP to your host machine IP address):
+For Xbebug to work you must comply with 2 things:
+
+- Using the vscode settings already provided, you must open the directory this README.md are, and use it as your workspace directory.
+
+- You must export the following environment variable (PS: Change the example IP to your host machine IP address):
 
 ```bash
 export DOCKER_HOST_IP=192.168.0.1
