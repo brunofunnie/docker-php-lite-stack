@@ -1,0 +1,40 @@
+version: "3.9"
+services:
+  httpd:
+    container_name: "app-web"
+    build:
+      context: ./docker
+      dockerfile: web.dockerfile
+    environment:
+      XDEBUG_CONFIG: "client_host=${DOCKER_HOST_IP:-host.docker.internal} client_port=9001"
+    ports:
+      - "8080:80"
+    volumes:
+      - ./application:/app
+
+  mysql:
+    image: mysql:5.7
+    container_name: "app-mysql"
+    ports:
+        - "3306:3306"
+    environment:
+        MYSQL_ROOT_PASSWORD: ''
+        MYSQL_ALLOW_EMPTY_PASSWORD: 'True'
+    volumes:
+        - ./docker/dbdata/mysql:/var/lib/mysql
+        - ./docker/confs/mysql/my.cnf:/etc/mysql/conf.d/mycustom.cnf
+
+  pma:
+    image: phpmyadmin
+    container_name: "app-pma"
+    ports:
+      - 8081:80
+    environment:
+      - PMA_ARBITRARY=1
+
+  mhog:
+    image: mailhog/mailhog
+    container_name: "app-mhog"
+    ports:
+      - 8025:8025
+      - 1025:1025
